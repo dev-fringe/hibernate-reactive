@@ -7,6 +7,7 @@ import org.hibernate.reactive.mutiny.Mutiny;
 import org.hibernate.reactive.stage.Stage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 //@EnableTransactionManagement
@@ -28,10 +29,11 @@ public class HibernateConfig {
 //		return t;
 //	}
 
-//	@Bean
-//	public Mutiny.SessionFactory sessionFactory() {
-//		return Persistence.createEntityManagerFactory("ReactivePU").unwrap(Mutiny.SessionFactory.class);
-//	}
+	@Bean
+	@Primary
+	public Mutiny.SessionFactory sessionFactory() {
+		return Persistence.createEntityManagerFactory("ReactivePU").unwrap(Mutiny.SessionFactory.class);
+	}
 //	
     @Bean
     public EntityManagerFactory entityManagerFactory() {
